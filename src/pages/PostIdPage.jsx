@@ -27,7 +27,7 @@ export default function PostIdPage() {
 
   return (
     <div>
-      <h1>Post Id = {params.id}</h1>
+      <h1>You are now checking post №{params.id}</h1>
       {isLoading ? (
         <Loader />
       ) : (
