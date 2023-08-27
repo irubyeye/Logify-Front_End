@@ -7,13 +7,18 @@ export default function Navbar() {
   const logout = () => {
     setIsAuth(false);
     localStorage.removeItem("auth");
+    localStorage.removeItem("id");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("token");
   };
   return (
     <div className="navbar">
+      <MyButton onClick={logout}>Exit</MyButton>
+
       <div className="navbar__links">
-        <MyButton onClick={logout}>Exit</MyButton>
-        <Link to="/about">About us</Link>
-        <Link to="/posts">Posts</Link>
+        <Link to="/about">About us</Link>&nbsp;
+        <Link to="/posts">Posts</Link>&nbsp;
+        <Link to="/cargos">Cargos</Link>
       </div>
     </div>
   );

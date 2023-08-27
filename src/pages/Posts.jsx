@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "../styles/App.css";
 
-import PostList from "../components/PostList";
+import PostList from "../components/postComponents/PostList";
 import MyButton from "../components/UI/button/MyButton";
-import PostForm from "../components/PostForm";
-import PostFilter from "../components/PostFilter";
+import PostForm from "../components/postComponents/PostForm";
+import PostFilter from "../components/postComponents/PostFilter";
 import MyModal from "../components/UI/myModal/MyModal";
 import { usePost } from "../hooks/usePosts";
 import { useEffect } from "react";
@@ -28,6 +28,7 @@ function Posts() {
     setPosts(response.data);
     const totalCount = response.headers["x-total-count"];
     setTotalPages(getPageCount(totalCount, limit));
+    console.log(response.headers);
   });
 
   useEffect(
