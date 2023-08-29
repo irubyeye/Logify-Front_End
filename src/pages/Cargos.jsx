@@ -10,7 +10,7 @@ import Pagination from "../components/UI/pagination/Pagination";
 import CargoList from "../components/cargoComponents/CargoList";
 import ResultsAmount from "../components/UI/resultsPicker/ResultsAmount";
 
-export default function Cargos() {
+export default function Cargos({ token }) {
   const [cargos, setCargos] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -19,11 +19,25 @@ export default function Cargos() {
   const [fetchCargos, isCargosLoading, cargosError] = useFetch(
     async (limit, page) => {
       try {
-        const response = await PostService.getAllCargos(limit, page);
-        setCargos(response.data.cargos);
+        if (!token) {
+          const response = await PostService.getAllCargos(limit, page);
+          setCargos(response.data.cargos);
 
-        const totalCount = response.data.totalResults;
-        setTotalPages(getPageCount(totalCount, limit));
+          const totalCount = response.data.totalResults;
+          setTotalPages(getPageCount(totalCount, limit));
+        } else {
+          const response = await PostService.getCurrentUserCargos(
+            limit,
+            page,
+            null,
+            null,
+            token
+          );
+          setCargos(response.data.cargos);
+
+          const totalCount = response.data.totalResults;
+          setTotalPages(getPageCount(totalCount, limit));
+        }
       } catch (e) {
         console.log(cargosError);
       }
@@ -63,7 +77,7 @@ export default function Cargos() {
           <ResultsAmount limit={limit} changeLimit={changeLimit} />
           <CargoList
             cargos={cargos}
-            title={"List of current available cargos"}
+            title={!token ? "List of current available cargos" : "Your cargos"}
           />
         </div>
       )}

@@ -1,9 +1,14 @@
 import React from "react";
 import CargoItem from "./CargoItem";
+import { Link } from "react-router-dom";
 
 export default function CargoList({ cargos, title }) {
   if (!cargos.length) {
-    return <h2 style={{ textAlign: "center" }}>List is empty</h2>;
+    return (
+      <h2 style={{ marginTop: "20px", textAlign: "center" }}>
+        List is empty <Link to={"/add-cargo"}>Add Cargo</Link>
+      </h2>
+    );
   } else {
     return (
       <div>

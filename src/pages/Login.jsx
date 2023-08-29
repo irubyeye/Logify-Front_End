@@ -14,19 +14,17 @@ export default function Login() {
   const [tryLogin, isLoading, error] = useFetch(async (login, password) => {
     try {
       const response = await PostService.login(login, password);
-
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("userId", response.data.userId);
       localStorage.setItem("auth", "true");
       setIsAuth(true);
     } catch (e) {
-      alert(error.response.data);
+      alert(e.response.data);
     }
   });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     await tryLogin(login, password);
   };
 

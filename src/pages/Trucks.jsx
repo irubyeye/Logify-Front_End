@@ -21,6 +21,7 @@ export default function Trucks() {
       try {
         const response = await PostService.getAllTrucks(limit, page);
         setTrucks(response.data.trucks);
+        console.log(response.data.trucks);
         const totalCount = response.data.totalResults;
         setTotalPages(getPageCount(totalCount, limit));
       } catch (e) {

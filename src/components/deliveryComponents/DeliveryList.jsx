@@ -10,7 +10,7 @@ export default function DeliveryList({ deliveries, title }) {
         <h1 style={{ textAlign: "center" }}>{title}</h1>
         {deliveries.map((delivery, index) => {
           return (
-            <div key={delivery.companyId}>
+            <div key={delivery.companyId + `${index}`}>
               <DeliveryItem delivery={delivery}></DeliveryItem>
             </div>
           );

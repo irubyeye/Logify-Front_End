@@ -11,6 +11,12 @@ import TruckIdPage from "../pages/TruckIdPage";
 import Trucks from "../pages/Trucks";
 import DeliveryIdItem from "../components/deliveryComponents/DeliveryIdItem";
 import Deliveries from "../pages/Deliveries";
+import DeliveryIdPage from "../pages/DeliveryIdPage";
+import MyCabinet from "../pages/MyCabinet";
+import MyCargos from "../pages/MyCargos";
+import MyDeliveries from "../pages/MyDeliveries";
+import CreateCargo from "../pages/CreateCargo";
+import CreateDelivery from "../pages/CreateDelivery";
 
 export const privateRoutes = [
   { path: "/about", component: <About />, exact: true },
@@ -21,7 +27,12 @@ export const privateRoutes = [
   { path: "/trucks", component: <Trucks />, exact: true },
   { path: "/trucks/:id", component: <TruckIdPage />, exact: true },
   { path: "/deliveries", component: <Deliveries />, exact: true },
-  { path: "/deliveries/:id", component: <DeliveryIdItem />, exact: true },
+  { path: "/deliveries/:id", component: <DeliveryIdPage />, exact: true },
+  { path: "/my", component: <MyCabinet />, exact: true },
+  { path: "/my-cargos", component: <MyCargos />, exact: true },
+  { path: "/my-deliveries", component: <MyDeliveries />, exact: true },
+  { path: "/add-cargo", component: <CreateCargo />, exact: true },
+  { path: "/add-delivery", component: <CreateDelivery />, exact: true },
 ];
 
 export const publicRoutes = [

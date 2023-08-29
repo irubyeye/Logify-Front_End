@@ -32,7 +32,7 @@ export default function Register() {
     try {
       const response = await PostService.register(data);
     } catch (e) {
-      alert(error.response.data);
+      alert(e.response.data);
     }
   });
 

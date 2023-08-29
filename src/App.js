@@ -5,6 +5,7 @@ import { AuthContext } from "./context";
 
 import Navbar from "./components/UI/navbar/Navbar";
 import AppRouter from "./components/AppRouter";
+import MyNavbar from "./components/UI/navbar/MyNavbar";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -16,6 +17,7 @@ function App() {
     <AuthContext.Provider value={{ isAuth, setIsAuth }}>
       <BrowserRouter>
         <Navbar />
+        <MyNavbar />
         <AppRouter />
       </BrowserRouter>
     </AuthContext.Provider>

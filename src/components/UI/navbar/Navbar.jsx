@@ -10,15 +10,17 @@ export default function Navbar() {
     localStorage.removeItem("id");
     localStorage.removeItem("userId");
     localStorage.removeItem("token");
+    localStorage.removeItem("companyId");
   };
   return (
     <div className="navbar">
       <MyButton onClick={logout}>Exit</MyButton>
-
       <div className="navbar__links">
         <Link to="/about">About us</Link>&nbsp;
         <Link to="/posts">Posts</Link>&nbsp;
-        <Link to="/cargos">Cargos</Link>
+        <Link to="/cargos">Cargos</Link>&nbsp;
+        <Link to="/deliveries">Deliveries</Link>&nbsp;
+        <Link to={"/my"}>Cabinet</Link>
       </div>
     </div>
   );

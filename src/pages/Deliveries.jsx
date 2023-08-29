@@ -10,7 +10,7 @@ import ResultsAmount from "../components/UI/resultsPicker/ResultsAmount";
 import Loader from "../components/UI/loader/Loader";
 import DeliveryList from "../components/deliveryComponents/DeliveryList";
 
-export default function Deliveries() {
+export default function Deliveries({ id }) {
   const [deliveries, setDeliveries] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -19,12 +19,17 @@ export default function Deliveries() {
   const [fetchDeliveries, isDeliveriesLoading, deliveriesError] = useFetch(
     async () => {
       try {
-        const response = await PostService.getActiveDeliveries();
-        setDeliveries(response.data.deliveries);
+        if (!id) {
+          const response = await PostService.getActiveDeliveries();
+          setDeliveries(response.data.deliveries);
 
-        console.log(deliveries);
-        const totalCount = response.data.deliveries.length;
-        setTotalPages(getPageCount(totalCount, limit));
+          const totalCount = response.data.deliveries.length;
+          setTotalPages(getPageCount(totalCount, limit));
+        } else {
+          const response = await PostService.userDeliveries(id);
+          console.log(response);
+          setDeliveries(response.data.deliveries.activeDeliveries);
+        }
       } catch (e) {
         console.log(deliveriesError);
       }

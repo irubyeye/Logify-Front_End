@@ -8,6 +8,7 @@ export const useFetch = (callback) => {
       setIsLoading(true);
       await callback(...args);
     } catch (error) {
+      console.log("erer");
       setPostError(error);
     } finally {
       setIsLoading(false);

@@ -9,16 +9,15 @@ export default function DeliveryItem(props) {
   const createdDateTime = formatDateTime(props.delivery.creatingDate);
   const loadingFromDate = simpleDate(props.delivery.loadingFromDate);
   const loadingToDate = simpleDate(props.delivery.loadingToDate);
-  console.log(props);
   return (
     <div className="post">
       <div className="post__content">
         <h4>{}</h4>
         <div style={{ display: "flex" }}>
           <div>🕒 {createdDateTime}</div> &nbsp;
-          <div>🚛 {props.delivery.truckInfo[0].trailerType}</div>&nbsp;
-          <div>📦 {props.delivery.truckInfo[0].truckSpace} m3</div>&nbsp;
-          <div>⚖️ {props.delivery.truckInfo[0].truckSpace} m3</div>
+          <div>🚛 {props.delivery.trucks.trailerType}</div>&nbsp;
+          <div>📦 {props.delivery.trucks.truckSpace} m3</div>&nbsp;
+          <div>⚖️ {props.delivery.trucks.truckSpace} m3</div>
         </div>
         <div style={{ display: "flex" }}>
           <div>🚀 From {props.delivery.departureLocation.join("")}</div>&nbsp;
