@@ -1,4 +1,8 @@
-# PostsFetcher React application
+# Logify React application
+
+This included leveraging React's state management, client-side
+routing with React Router, and asynchronous data handling with Axios. The result is a user-friendly, scalable
+front-end that enhances user engagement.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
